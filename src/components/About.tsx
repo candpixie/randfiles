@@ -4,7 +4,7 @@ import { Beaker, Music, Users, Lightbulb, Award, BookOpen, Microscope, Heart } f
 const About: React.FC = () => {
   const skills = [
     'Biochemical Engineering',
-    'Process Design',
+    'Product Design',
     'Music Production',
     'Audio Engineering',
     'Leadership',
@@ -30,8 +30,8 @@ const About: React.FC = () => {
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
-              A passionate biochemical engineering student who finds harmony between scientific innovation 
-              and musical creativity, while building communities and leading impactful projects.
+              A goal-driven and innovative aspiring engineer, hoping to leverage music and business into healthcare and biotech. 
+              Currently, venturing, building and producing.
             </p>
           </div>
 
