@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ExternalLink, Github, Beaker, Users, Lightbulb, Award, Microscope, FlaskConical, Briefcase, Heart, GraduationCap } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animatedElements = entry.target.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .animate-on-scroll-scale');
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('animate-in');
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const projects = [
     {
       title: 'MedicSFacts - Non-Profit Organization',
@@ -84,15 +110,15 @@ const Portfolio: React.FC = () => {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="portfolio" className="py-20 bg-surface">
+    <section ref={sectionRef} id="portfolio" className="py-20 bg-surface">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 animate-on-scroll">
               Projects & Experience
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
+            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8 animate-on-scroll-scale"></div>
+            <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed animate-on-scroll">
               A showcase of my research projects, organizations I've founded, internships, 
               and initiatives that demonstrate my passion for innovation and community impact.
             </p>
@@ -100,15 +126,16 @@ const Portfolio: React.FC = () => {
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 animate-on-scroll-scale ${
                   activeCategory === category
                     ? 'bg-primary text-white shadow-lg'
                     : 'bg-surface/50 text-textSecondary hover:bg-primary/10 hover:text-primary border border-border'
                 }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {category}
               </button>
@@ -120,7 +147,8 @@ const Portfolio: React.FC = () => {
             {filteredProjects.map((project, index) => (
               <div
                 key={index}
-                className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 group"
+                className="bg-background/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group animate-on-scroll animate-card-hover"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -129,7 +157,7 @@ const Portfolio: React.FC = () => {
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <project.icon size={48} className="text-white" />
+                    <project.icon size={48} className="text-white animate-bounce-in" />
                   </div>
                   <div className="absolute top-3 right-3 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-medium">
                     {project.category}
@@ -148,7 +176,8 @@ const Portfolio: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium"
+                        className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium animate-fade-in-up"
+                        style={{ animationDelay: `${techIndex * 0.1}s` }}
                       >
                         {tech}
                       </span>
@@ -158,14 +187,14 @@ const Portfolio: React.FC = () => {
                   <div className="flex space-x-3">
                     <a
                       href={project.liveUrl}
-                      className="flex items-center space-x-2 bg-primary hover:bg-accent text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm"
+                      className="flex items-center space-x-2 bg-primary hover:bg-accent text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm transform hover:scale-105"
                     >
                       <ExternalLink size={14} />
                       <span>Details</span>
                     </a>
                     <a
                       href={project.githubUrl}
-                      className="flex items-center space-x-2 bg-surface hover:bg-primary/10 text-text border border-border hover:border-primary px-4 py-2 rounded-lg transition-all font-medium text-sm"
+                      className="flex items-center space-x-2 bg-surface hover:bg-primary/10 text-text border border-border hover:border-primary px-4 py-2 rounded-lg transition-all font-medium text-sm transform hover:scale-105"
                     >
                       <Github size={14} />
                       <span>More</span>
@@ -178,7 +207,7 @@ const Portfolio: React.FC = () => {
 
           {/* Experience Section */}
           <div>
-            <h3 className="text-2xl font-bold text-text mb-8 text-center flex items-center justify-center">
+            <h3 className="text-2xl font-bold text-text mb-8 text-center flex items-center justify-center animate-on-scroll-left">
               <Briefcase className="mr-3 text-primary" size={28} />
               Professional Experience
             </h3>
@@ -186,10 +215,11 @@ const Portfolio: React.FC = () => {
               {experiences.map((exp, index) => (
                 <div
                   key={index}
-                  className="bg-background/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors"
+                  className="bg-background/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors animate-on-scroll-right animate-card-hover"
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="bg-primary/20 rounded-full p-3 flex-shrink-0">
+                    <div className="bg-primary/20 rounded-full p-3 flex-shrink-0 animate-rotate-in">
                       <exp.icon size={20} className="text-primary" />
                     </div>
                     <div className="flex-1">

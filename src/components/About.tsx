@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { GraduationCap, Award, Globe, Languages, Music, Microscope, Heart, BookOpen } from 'lucide-react';
 
 const About: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animatedElements = entry.target.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .animate-on-scroll-scale');
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('animate-in');
+              }, index * 100);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const education = [
     {
       institution: 'New York University, Tandon School of Engineering',
@@ -64,15 +90,15 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background">
+    <section ref={sectionRef} id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 animate-on-scroll">
               About Me
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
+            <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8 animate-on-scroll-scale"></div>
+            <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed animate-on-scroll">
               A goal-driven and innovative aspiring engineer, hoping to leverage music and business into healthcare and biotech. 
               Currently studying Chemical & Biomolecular Engineering at NYU while building organizations and creating music.
             </p>
@@ -83,7 +109,8 @@ const About: React.FC = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors group"
+                className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors group animate-on-scroll-scale animate-card-hover"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
                   <stat.icon size={20} className="text-primary" />
@@ -96,7 +123,7 @@ const About: React.FC = () => {
 
           {/* Education */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-text mb-8 flex items-center">
+            <h3 className="text-2xl font-bold text-text mb-8 flex items-center animate-on-scroll-left">
               <GraduationCap className="mr-3 text-primary" size={28} />
               Education
             </h3>
@@ -104,7 +131,8 @@ const About: React.FC = () => {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors"
+                  className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors animate-on-scroll-right animate-card-hover"
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                     <h4 className="text-lg font-bold text-text">{edu.institution}</h4>
@@ -128,7 +156,7 @@ const About: React.FC = () => {
 
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 animate-on-scroll animate-card-hover">
               <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
                 <Microscope size={20} className="text-primary" />
               </div>
@@ -137,7 +165,8 @@ const About: React.FC = () => {
                 {skills.technical.map((skill, index) => (
                   <div
                     key={index}
-                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {skill}
                   </div>
@@ -145,7 +174,7 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 animate-on-scroll animate-card-hover">
               <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
                 <Heart size={20} className="text-primary" />
               </div>
@@ -154,7 +183,8 @@ const About: React.FC = () => {
                 {skills.soft.map((skill, index) => (
                   <div
                     key={index}
-                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {skill}
                   </div>
@@ -162,7 +192,7 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 animate-on-scroll animate-card-hover">
               <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
                 <Languages size={20} className="text-primary" />
               </div>
@@ -171,7 +201,8 @@ const About: React.FC = () => {
                 {skills.languages.map((language, index) => (
                   <div
                     key={index}
-                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {language}
                   </div>
@@ -179,7 +210,7 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 animate-on-scroll animate-card-hover">
               <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
                 <Music size={20} className="text-primary" />
               </div>
@@ -188,7 +219,8 @@ const About: React.FC = () => {
                 {skills.arts.map((cert, index) => (
                   <div
                     key={index}
-                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {cert}
                   </div>
