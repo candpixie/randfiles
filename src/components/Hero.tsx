@@ -33,16 +33,17 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-text mb-6 animate-fade-in-up delay-200">
-            Your Name
+            Engineering Student & Aspiring Innovator
           </h1>
           
           <p className="text-xl md:text-2xl text-textSecondary mb-8 animate-fade-in-up delay-400">
-            Biochemical Engineering Student & Musician
+            Chemical & Biomolecular Engineering | Musician | Researcher
           </p>
           
           <p className="text-lg md:text-xl text-textSecondary mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-600">
-            Bridging science and art through engineering innovation and musical expression. 
-            Passionate about biotechnology, sustainable solutions, and creating meaningful melodies.
+            NYU Tandon School of Engineering student passionate about bridging science and art through 
+            engineering innovation, medical research, and musical expression. Founder of MedicSFacts 
+            and advocate for interdisciplinary science education.
           </p>
 
           <div className="flex justify-center space-x-6 mb-16 animate-fade-in-up delay-800">
@@ -63,7 +64,7 @@ const Hero: React.FC = () => {
               <Linkedin size={24} />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://youtube.com/@candpixie"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-surface/20 backdrop-blur-sm hover:bg-surface/30 text-text p-4 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg border border-surface/30"

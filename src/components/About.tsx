@@ -1,23 +1,66 @@
 import React from 'react';
-import { Beaker, Music, Users, Lightbulb, Award, BookOpen, Microscope, Heart } from 'lucide-react';
+import { GraduationCap, Award, Globe, Languages, Music, Microscope, Heart, BookOpen } from 'lucide-react';
 
 const About: React.FC = () => {
-  const skills = [
-    'Biochemical Engineering',
-    'Product Design',
-    'Music Production',
-    'Audio Engineering',
-    'Leadership',
-    'Project Management',
-    'Research & Development',
-    'Team Building',
+  const education = [
+    {
+      institution: 'New York University, Tandon School of Engineering',
+      degree: 'Bachelor of Science - Chemical and Biomolecular Engineering',
+      period: 'Sep 2025 - May 2029',
+      status: 'Current',
+    },
+    {
+      institution: "St Paul's Co-educational College",
+      degree: 'Hong Kong Diploma of Secondary Education (HKDSE)',
+      period: '2022 - 2025',
+      details: 'English Society Secretary, Class Captain, Physics & Psychology Olympiad Teams',
+    },
+    {
+      institution: 'Marymount Secondary School',
+      degree: 'Secondary Education',
+      period: '2019 - 2022',
+      details: 'Academic Excellence Scholarship, International Junior Science Olympiad Training',
+    },
   ];
 
+  const skills = {
+    technical: [
+      'Graphic Design (Figma, Adobe Illustrator)',
+      'Python Programming',
+      'Machine Learning & AI',
+      '3D Fabrication',
+      'Data Analysis',
+      'Academic Research',
+      'Project Management',
+    ],
+    soft: [
+      'Teaching & Mentoring',
+      'Debate & Public Speaking',
+      'Scientific Writing',
+      'Music Composition',
+      'Leadership',
+      'Community Building',
+    ],
+    languages: [
+      'English (IELTS: 8.0/9)',
+      'Cantonese (Native)',
+      'Mandarin (Fluent)',
+      'Spanish (Intermediate A2-B1)',
+    ],
+    arts: [
+      'ABRSM Grade 8 Recorder (Distinction)',
+      'ABRSM Grade 8 Piano (Merit)',
+      'ABRSM Grade 8 Violin',
+      'RAD Grade 8 Ballet',
+      'Music Theory Grade 5 (96/100)',
+    ],
+  };
+
   const stats = [
-    { icon: Beaker, label: 'Engineering Projects', value: '15+' },
-    { icon: Music, label: 'Music Tracks', value: '50+' },
-    { icon: Users, label: 'Organizations Founded', value: '3' },
-    { icon: Award, label: 'Academic Achievements', value: '10+' },
+    { icon: GraduationCap, label: 'Academic Awards', value: '15+' },
+    { icon: Music, label: 'Music Certifications', value: '8' },
+    { icon: Globe, label: 'Languages', value: '4' },
+    { icon: Award, label: 'Research Projects', value: '5+' },
   ];
 
   return (
@@ -31,94 +74,126 @@ const About: React.FC = () => {
             <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
               A goal-driven and innovative aspiring engineer, hoping to leverage music and business into healthcare and biotech. 
-              Currently, venturing, building and producing.
+              Currently studying Chemical & Biomolecular Engineering at NYU while building organizations and creating music.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h3 className="text-2xl font-bold text-text mb-6 flex items-center">
-                <Microscope className="mr-3 text-primary" size={28} />
-                My Journey
-              </h3>
-              <p className="text-textSecondary mb-6 leading-relaxed">
-                As a biochemical engineering student, I'm fascinated by the intersection of biology, 
-                chemistry, and engineering principles. My academic journey has led me to explore 
-                sustainable biotechnology solutions, process optimization, and innovative approaches 
-                to complex biological systems.
-              </p>
-              <p className="text-textSecondary mb-6 leading-relaxed">
-                Beyond the laboratory, music serves as my creative outlet and passion project. 
-                Through my YouTube channel, I share original compositions, covers, and musical 
-                explorations that reflect my artistic vision and connect with fellow music enthusiasts.
-              </p>
-              <p className="text-textSecondary mb-8 leading-relaxed">
-                My entrepreneurial spirit has driven me to found several organizations, focusing on 
-                community building, knowledge sharing, and creating platforms for collaboration. 
-                These experiences have taught me valuable lessons in leadership, project management, 
-                and the power of bringing people together around shared goals.
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {skills.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="bg-surface/50 backdrop-blur-sm border border-border rounded-lg p-3 text-center hover:bg-primary/10 transition-colors"
-                  >
-                    <span className="text-sm font-medium text-text">{skill}</span>
-                  </div>
-                ))}
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors group"
+              >
+                <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
+                  <stat.icon size={20} className="text-primary" />
+                </div>
+                <div className="text-2xl font-bold text-text mb-2">{stat.value}</div>
+                <div className="text-sm text-textSecondary">{stat.label}</div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-2xl p-8 shadow-lg">
-              <div className="grid grid-cols-2 gap-6">
-                {stats.map((stat, index) => (
-                  <div key={index} className="text-center group">
-                    <div className="bg-primary/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
-                      <stat.icon size={24} className="text-primary" />
-                    </div>
-                    <div className="text-2xl font-bold text-text mb-2">{stat.value}</div>
-                    <div className="text-sm text-textSecondary">{stat.label}</div>
+          {/* Education */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-text mb-8 flex items-center">
+              <GraduationCap className="mr-3 text-primary" size={28} />
+              Education
+            </h3>
+            <div className="space-y-6">
+              {education.map((edu, index) => (
+                <div
+                  key={index}
+                  className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                    <h4 className="text-lg font-bold text-text">{edu.institution}</h4>
+                    <span className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                      {edu.period}
+                    </span>
                   </div>
-                ))}
-              </div>
+                  <p className="text-textSecondary font-medium mb-2">{edu.degree}</p>
+                  {edu.details && (
+                    <p className="text-sm text-textSecondary">{edu.details}</p>
+                  )}
+                  {edu.status && (
+                    <span className="inline-block mt-2 text-xs bg-accent/20 text-accent px-2 py-1 rounded-full">
+                      {edu.status}
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Values & Interests */}
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors">
-              <div className="bg-primary/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Beaker size={24} className="text-primary" />
+          {/* Skills Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+              <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
+                <Microscope size={20} className="text-primary" />
               </div>
-              <h4 className="text-lg font-bold text-text mb-3">Scientific Innovation</h4>
-              <p className="text-textSecondary text-sm leading-relaxed">
-                Passionate about developing sustainable biotechnology solutions and advancing 
-                our understanding of biological processes through engineering principles.
-              </p>
+              <h4 className="text-lg font-bold text-text mb-4">Technical Skills</h4>
+              <div className="space-y-2">
+                {skills.technical.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors">
-              <div className="bg-primary/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Music size={24} className="text-primary" />
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+              <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
+                <Heart size={20} className="text-primary" />
               </div>
-              <h4 className="text-lg font-bold text-text mb-3">Musical Expression</h4>
-              <p className="text-textSecondary text-sm leading-relaxed">
-                Creating and sharing music that resonates with emotions, tells stories, 
-                and connects people across different backgrounds and experiences.
-              </p>
+              <h4 className="text-lg font-bold text-text mb-4">Soft Skills</h4>
+              <div className="space-y-2">
+                {skills.soft.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors">
-              <div className="bg-primary/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Users size={24} className="text-primary" />
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+              <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
+                <Languages size={20} className="text-primary" />
               </div>
-              <h4 className="text-lg font-bold text-text mb-3">Community Building</h4>
-              <p className="text-textSecondary text-sm leading-relaxed">
-                Founding organizations and leading initiatives that bring people together, 
-                foster collaboration, and create positive impact in various communities.
-              </p>
+              <h4 className="text-lg font-bold text-text mb-4">Languages</h4>
+              <div className="space-y-2">
+                {skills.languages.map((language, index) => (
+                  <div
+                    key={index}
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                  >
+                    {language}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6">
+              <div className="bg-primary/20 rounded-full p-3 w-12 h-12 flex items-center justify-center mb-4">
+                <Music size={20} className="text-primary" />
+              </div>
+              <h4 className="text-lg font-bold text-text mb-4">Arts Certifications</h4>
+              <div className="space-y-2">
+                {skills.arts.map((cert, index) => (
+                  <div
+                    key={index}
+                    className="text-sm text-textSecondary bg-primary/5 px-3 py-2 rounded-lg"
+                  >
+                    {cert}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

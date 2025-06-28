@@ -1,71 +1,82 @@
 import React from 'react';
-import { ExternalLink, Github, Beaker, Users, Lightbulb, Award, Microscope, FlaskConical } from 'lucide-react';
+import { ExternalLink, Github, Beaker, Users, Lightbulb, Award, Microscope, FlaskConical, Briefcase, Heart, GraduationCap } from 'lucide-react';
 
 const Portfolio: React.FC = () => {
   const projects = [
     {
-      title: 'Sustainable Biofuel Production Process',
-      description: 'Designed and optimized a novel biofuel production process using algae biomass, achieving 25% higher efficiency than conventional methods through process integration and heat recovery.',
-      image: 'https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Process Design', 'MATLAB', 'Aspen Plus', 'Sustainability Analysis'],
-      liveUrl: '#',
-      githubUrl: '#',
-      icon: Beaker,
-      category: 'Engineering',
-    },
-    {
-      title: 'Biomedical Device Sterilization Study',
-      description: 'Conducted comprehensive research on sterilization methods for biomedical devices, comparing effectiveness of different techniques and developing improved protocols.',
+      title: 'MedicSFacts - Non-Profit Organization',
+      description: 'Founded and lead a non-profit organization promoting interdisciplinary science and disease awareness. Editor-in-Chief of Neuroplasticizer Newsletter, engaged 3.6k+ viewers across 4+ continents through social media campaigns.',
       image: 'https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Research', 'Data Analysis', 'Laboratory Testing', 'Technical Writing'],
-      liveUrl: '#',
-      githubUrl: '#',
-      icon: Microscope,
-      category: 'Research',
-    },
-    {
-      title: 'Student Engineering Society',
-      description: 'Founded and led a student organization focused on promoting engineering excellence, organizing workshops, and connecting students with industry professionals.',
-      image: 'https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Leadership', 'Event Management', 'Community Building', 'Networking'],
+      technologies: ['Leadership', 'Graphic Design', 'Content Creation', 'Community Building'],
       liveUrl: '#',
       githubUrl: '#',
       icon: Users,
       category: 'Leadership',
     },
     {
-      title: 'Enzyme Kinetics Modeling Tool',
-      description: 'Developed a computational tool for modeling enzyme kinetics in biochemical processes, helping students and researchers visualize complex reaction mechanisms.',
+      title: 'MeloMed.io - Music Therapy Initiative',
+      description: 'YouTube channel spreading positivity through recorder music covers with music therapy principles. Advocates for recorder instrument awareness and therapeutic music applications.',
+      image: 'https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=600',
+      technologies: ['Music Therapy', 'Content Creation', 'Recorder Performance', 'Video Production'],
+      liveUrl: 'https://youtube.com/@candpixie',
+      githubUrl: '#',
+      icon: Heart,
+      category: 'Music',
+    },
+    {
+      title: 'Light Pollution Research - IEEE Conference',
+      description: 'Conducted comprehensive research on light pollution impact on Hong Kong citizens and ecosystem. Presented findings at IEEE Young Engineers Conference and HKU, received commendations.',
+      image: 'https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600',
+      technologies: ['Research', 'Data Analysis', 'Environmental Science', 'Public Speaking'],
+      liveUrl: '#',
+      githubUrl: '#',
+      icon: Microscope,
+      category: 'Research',
+    },
+    {
+      title: 'Rehabilitation Robotics Project',
+      description: 'Designed innovative rehabilitation products for stroke patients at Hong Kong Academy for Gifted Education. Focused on assistive technology and patient-centered design solutions.',
       image: 'https://images.pexels.com/photos/3825581/pexels-photo-3825581.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Python', 'NumPy', 'Matplotlib', 'Biochemical Modeling'],
+      technologies: ['Robotics', 'Product Design', '3D Fabrication', 'Healthcare Technology'],
       liveUrl: '#',
       githubUrl: '#',
       icon: FlaskConical,
-      category: 'Software',
-    },
-    {
-      title: 'Waste-to-Energy Optimization',
-      description: 'Designed an innovative waste-to-energy conversion system for campus sustainability, reducing waste by 40% while generating renewable energy.',
-      image: 'https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Process Engineering', 'Sustainability', 'Energy Systems', 'Environmental Impact'],
-      liveUrl: '#',
-      githubUrl: '#',
-      icon: Lightbulb,
-      category: 'Sustainability',
-    },
-    {
-      title: 'Music Technology Startup',
-      description: 'Co-founded a startup developing innovative music technology solutions, bridging the gap between traditional music creation and modern digital tools.',
-      image: 'https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Entrepreneurship', 'Product Development', 'Music Technology', 'Business Strategy'],
-      liveUrl: '#',
-      githubUrl: '#',
-      icon: Award,
-      category: 'Entrepreneurship',
+      category: 'Engineering',
     },
   ];
 
-  const categories = ['All', 'Engineering', 'Research', 'Leadership', 'Software', 'Sustainability', 'Entrepreneurship'];
+  const experiences = [
+    {
+      title: 'Admin/Engineer Intern',
+      company: 'China Resource Crement & Redland Concrete',
+      period: 'Aug 2024',
+      description: 'Gained hands-on experience in construction materials and quality control processes.',
+      icon: Briefcase,
+    },
+    {
+      title: 'Physician Surgical Attachment',
+      company: 'Queen Mary Hospital - Dr. Lydia Lau',
+      period: 'Aug 2024',
+      description: 'Observed surgical procedures and gained insights into medical practice and patient care.',
+      icon: Heart,
+    },
+    {
+      title: 'Healthcare Attachment Programme',
+      company: 'CUHK',
+      period: 'Nov 2023',
+      description: 'Explored healthcare systems and medical research methodologies.',
+      icon: GraduationCap,
+    },
+    {
+      title: 'Bookstore Owner',
+      company: 'Independent Business',
+      period: 'Jun-Aug 2024',
+      description: 'Sold 50+ reference books and supplies, generated $2k revenue while serving local community needs.',
+      icon: Award,
+    },
+  ];
+
+  const categories = ['All', 'Leadership', 'Music', 'Research', 'Engineering'];
   const [activeCategory, setActiveCategory] = React.useState('All');
 
   const filteredProjects = activeCategory === 'All' 
@@ -78,12 +89,12 @@ const Portfolio: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">
-              Projects & Organizations
+              Projects & Experience
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
-              A showcase of my engineering projects, research work, organizations I've founded, 
-              and side projects that demonstrate my passion for innovation and community building.
+              A showcase of my research projects, organizations I've founded, internships, 
+              and initiatives that demonstrate my passion for innovation and community impact.
             </p>
           </div>
 
@@ -104,7 +115,8 @@ const Portfolio: React.FC = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             {filteredProjects.map((project, index) => (
               <div
                 key={index}
@@ -156,12 +168,42 @@ const Portfolio: React.FC = () => {
                       className="flex items-center space-x-2 bg-surface hover:bg-primary/10 text-text border border-border hover:border-primary px-4 py-2 rounded-lg transition-all font-medium text-sm"
                     >
                       <Github size={14} />
-                      <span>Code</span>
+                      <span>More</span>
                     </a>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Experience Section */}
+          <div>
+            <h3 className="text-2xl font-bold text-text mb-8 text-center flex items-center justify-center">
+              <Briefcase className="mr-3 text-primary" size={28} />
+              Professional Experience
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {experiences.map((exp, index) => (
+                <div
+                  key={index}
+                  className="bg-background/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:bg-primary/5 transition-colors"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-primary/20 rounded-full p-3 flex-shrink-0">
+                      <exp.icon size={20} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h4 className="text-lg font-bold text-text">{exp.title}</h4>
+                        <span className="text-sm text-primary font-medium">{exp.period}</span>
+                      </div>
+                      <p className="text-textSecondary font-medium mb-2">{exp.company}</p>
+                      <p className="text-sm text-textSecondary">{exp.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

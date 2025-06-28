@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Portfolio from './components/Portfolio';
 import YouTube from './components/YouTube';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ThemeSwitcher from './components/ThemeSwitcher';
@@ -19,6 +20,7 @@ function App() {
           <About />
           <Portfolio />
           <YouTube />
+          <Experience />
           <Contact />
         </main>
         <Footer />

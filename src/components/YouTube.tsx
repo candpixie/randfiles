@@ -1,51 +1,69 @@
 import React from 'react';
-import { Play, Users, Eye, ThumbsUp, ExternalLink, Music, Headphones } from 'lucide-react';
+import { Play, Users, Eye, ThumbsUp, ExternalLink, Music, Headphones, Award, Heart } from 'lucide-react';
 
 const YouTube: React.FC = () => {
   const videos = [
     {
-      title: 'Original Composition: "Molecular Dreams"',
+      title: 'Recorder Music Therapy Session - "Healing Melodies"',
       thumbnail: 'https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=400',
-      views: '15.2K',
-      likes: '892',
-      duration: '4:23',
-      url: '#',
-      type: 'Original',
+      views: '2.1K',
+      likes: '156',
+      duration: '8:23',
+      url: 'https://youtube.com/@candpixie',
+      type: 'Therapy',
     },
     {
-      title: 'Piano Cover: "Bohemian Rhapsody"',
+      title: 'Recorder Cover: "Canon in D" - Pachelbel',
       thumbnail: 'https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=400',
-      views: '28.7K',
-      likes: '1.3K',
-      duration: '6:15',
-      url: '#',
+      views: '5.7K',
+      likes: '342',
+      duration: '4:15',
+      url: 'https://youtube.com/@candpixie',
       type: 'Cover',
     },
     {
-      title: 'Acoustic Session: "Study Vibes"',
+      title: 'Original Composition: "Laboratory Dreams"',
       thumbnail: 'https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=400',
-      views: '9.8K',
-      likes: '567',
-      duration: '12:45',
-      url: '#',
-      type: 'Session',
+      views: '1.8K',
+      likes: '98',
+      duration: '6:45',
+      url: 'https://youtube.com/@candpixie',
+      type: 'Original',
     },
     {
-      title: 'Electronic Fusion: "Lab Rhythms"',
+      title: 'Recorder Advocacy: "Why Recorder Matters"',
       thumbnail: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=400',
-      views: '22.1K',
-      likes: '1.1K',
-      duration: '5:38',
-      url: '#',
-      type: 'Electronic',
+      views: '3.2K',
+      likes: '187',
+      duration: '12:38',
+      url: 'https://youtube.com/@candpixie',
+      type: 'Educational',
+    },
+  ];
+
+  const achievements = [
+    {
+      title: 'ABRSM Grade 8 Recorder',
+      description: 'Achieved Distinction level in 2021',
+      icon: Award,
+    },
+    {
+      title: 'Music Therapy Advocate',
+      description: 'Promoting positivity through therapeutic music',
+      icon: Heart,
+    },
+    {
+      title: 'Recorder Instrument Advocacy',
+      description: 'Raising awareness for underappreciated instruments',
+      icon: Music,
     },
   ];
 
   const stats = [
-    { icon: Users, label: 'Subscribers', value: '8.5K' },
-    { icon: Eye, label: 'Total Views', value: '245K' },
-    { icon: ThumbsUp, label: 'Total Likes', value: '12.8K' },
-    { icon: Music, label: 'Original Tracks', value: '47' },
+    { icon: Users, label: 'Subscribers', value: '1.2K' },
+    { icon: Eye, label: 'Total Views', value: '15.8K' },
+    { icon: ThumbsUp, label: 'Total Likes', value: '783' },
+    { icon: Music, label: 'Videos Published', value: '24' },
   ];
 
   return (
@@ -54,13 +72,13 @@ const YouTube: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">
-              Music Channel
+              MeloMed.io - Music Channel
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
             <p className="text-xl text-textSecondary max-w-3xl mx-auto leading-relaxed">
-              Welcome to my musical world! Here I share original compositions, covers, 
-              and acoustic sessions that blend my love for music with creative expression. 
-              From piano melodies to electronic fusion, explore the soundtrack of my journey.
+              Welcome to MeloMed.io! My YouTube channel dedicated to spreading positivity and optimism 
+              through recorder music covers with music therapy principles. Advocating for the therapeutic 
+              power of music and the beauty of the recorder instrument.
             </p>
           </div>
 
@@ -80,13 +98,35 @@ const YouTube: React.FC = () => {
             ))}
           </div>
 
+          {/* Music Achievements */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-text mb-8 text-center flex items-center justify-center">
+              <Award className="mr-3 text-primary" size={28} />
+              Musical Achievements
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {achievements.map((achievement, index) => (
+                <div
+                  key={index}
+                  className="bg-surface/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:bg-primary/5 transition-colors"
+                >
+                  <div className="bg-primary/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <achievement.icon size={24} className="text-primary" />
+                  </div>
+                  <h4 className="text-lg font-bold text-text mb-2">{achievement.title}</h4>
+                  <p className="text-sm text-textSecondary">{achievement.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Featured Videos */}
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-text mb-8 text-center flex items-center justify-center">
               <Headphones className="mr-3 text-primary" size={28} />
-              Latest Tracks
+              Latest Videos
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
               {videos.map((video, index) => (
                 <div
                   key={index}
@@ -131,9 +171,11 @@ const YouTube: React.FC = () => {
 
                     <a
                       href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center space-x-2 text-primary hover:text-accent font-medium transition-colors"
                     >
-                      <span>Listen Now</span>
+                      <span>Watch Now</span>
                       <ExternalLink size={14} />
                     </a>
                   </div>
@@ -147,15 +189,15 @@ const YouTube: React.FC = () => {
             <div className="flex items-center justify-center mb-4">
               <Music className="text-primary mr-3" size={32} />
               <h3 className="text-2xl font-bold text-text">
-                Subscribe for New Music!
+                Join the MeloMed.io Community!
               </h3>
             </div>
             <p className="text-textSecondary mb-6 max-w-2xl mx-auto">
-              Join my musical journey and be the first to hear new original compositions, 
-              covers, and acoustic sessions. New content uploaded weekly!
+              Subscribe to experience the healing power of music through recorder performances, 
+              original compositions, and music therapy sessions. New therapeutic content uploaded regularly!
             </p>
             <a
-              href="https://youtube.com"
+              href="https://youtube.com/@candpixie"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 bg-primary hover:bg-accent text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"

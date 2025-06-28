@@ -12,10 +12,10 @@ const Footer: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-4">John Doe</h3>
+              <h3 className="text-2xl font-bold mb-4">Engineering Student & Aspiring Innovator</h3>
               <p className="text-background/80 max-w-2xl mx-auto">
-                Creative Developer & Content Creator passionate about building amazing 
-                digital experiences and sharing knowledge with the world.
+                Chemical & Biomolecular Engineering student at NYU, passionate about bridging 
+                science and art through research, music, and community building.
               </p>
             </div>
 
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
                 <div className="flex items-center space-x-2 text-background/80">
                   <span>Made with</span>
                   <Heart size={16} className="text-red-400" fill="currentColor" />
-                  <span>by John Doe</span>
+                  <span>and passion for innovation</span>
                 </div>
                 
                 <div className="text-background/80">
