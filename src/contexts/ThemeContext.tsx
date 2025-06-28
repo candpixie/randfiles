@@ -102,7 +102,7 @@ const themes: Record<string, Theme> = {
     },
   },
   // Dark Themes
-  darkSunset: {
+  darksunset: {
     name: 'Dark Sunset',
     mode: 'dark',
     colors: {
@@ -116,7 +116,7 @@ const themes: Record<string, Theme> = {
       border: '#404040',
     },
   },
-  darkOcean: {
+  darkocean: {
     name: 'Dark Ocean',
     mode: 'dark',
     colors: {
@@ -130,7 +130,7 @@ const themes: Record<string, Theme> = {
       border: '#2D3748',
     },
   },
-  darkLavender: {
+  darklavender: {
     name: 'Dark Lavender',
     mode: 'dark',
     colors: {
@@ -144,7 +144,7 @@ const themes: Record<string, Theme> = {
       border: '#4C1D95',
     },
   },
-  darkMint: {
+  darkmint: {
     name: 'Dark Mint',
     mode: 'dark',
     colors: {
@@ -158,7 +158,7 @@ const themes: Record<string, Theme> = {
       border: '#374151',
     },
   },
-  darkRose: {
+  darkrose: {
     name: 'Dark Rose',
     mode: 'dark',
     colors: {
@@ -214,7 +214,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const currentTheme = themes[currentThemeName];
     if (currentTheme.mode === 'light') {
       // Switch to corresponding dark theme or default dark theme
-      const darkEquivalent = `dark${currentTheme.name}`;
+      const baseName = currentTheme.name.toLowerCase();
+      const darkEquivalent = `dark${baseName}`;
       if (themes[darkEquivalent]) {
         setTheme(darkEquivalent);
       } else {
